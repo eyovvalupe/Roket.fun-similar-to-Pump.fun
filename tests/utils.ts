@@ -42,7 +42,7 @@ export const mintingTokens = async ({
 }) => {
   const metadata = {
     name: "Rocket Fun",
-    symbol: "ROCKETFUN",
+    symbol: "Pump",
     uri: "https://gateway.pinata.cloud/ipfs/QmRRn1UZJHKjLbq2EtZcrEjn2qeUX6B2cjYLir233Dk5vn",
   };
 
@@ -133,7 +133,7 @@ export function createValues(defaults?: TestValuesDefaults): TestValues {
 
   const ammKey = PublicKey.findProgramAddressSync(
     [id.toBuffer()],
-    anchor.workspace.Rocketfun.programId
+    anchor.workspace.Pump.programId
   )[0];
 
   // Making sure tokens are in the right order
@@ -147,7 +147,7 @@ export function createValues(defaults?: TestValuesDefaults): TestValues {
       mintAKeypair.publicKey.toBuffer(),
       Buffer.from("authority"),
     ],
-    anchor.workspace.Rocketfun.programId
+    anchor.workspace.Pump.programId
   )[0];
 
   const mintLiquidity = PublicKey.findProgramAddressSync(
@@ -156,12 +156,12 @@ export function createValues(defaults?: TestValuesDefaults): TestValues {
       mintAKeypair.publicKey.toBuffer(),
       Buffer.from("liquidity"),
     ],
-    anchor.workspace.Rocketfun.programId
+    anchor.workspace.Pump.programId
   )[0];
 
   const poolKey = PublicKey.findProgramAddressSync(
     [ammKey.toBuffer(), mintAKeypair.publicKey.toBuffer()],
-    anchor.workspace.Rocketfun.programId
+    anchor.workspace.Pump.programId
   )[0];
 
   return {

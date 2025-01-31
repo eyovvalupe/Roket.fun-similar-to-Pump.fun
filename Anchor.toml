@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.devnet]
-pump = "37tkvZheP1dFm3Pfj1uRUHPqFVq9HBpVnNPYFqTQU493"
+pump = "BR1gGg7joMV6PxKMgsszrSydXJAPMyk1KQC7wtx8Vz7M"
 
 [registry]
 url = "https://api.apr.dev"

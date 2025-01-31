@@ -1,20 +1,18 @@
+#![allow(clippy::result_large_err)]
+
 use anchor_lang::prelude::*;
 use instructions::*;
 
-pub mod instructions;
-pub mod constants;
-pub mod states;
-pub mod errors;
+mod instructions;
+mod constants;
+mod states;
+mod errors;
 
-declare_id!("37tkvZheP1dFm3Pfj1uRUHPqFVq9HBpVnNPYFqTQU493");
+declare_id!("BR1gGg7joMV6PxKMgsszrSydXJAPMyk1KQC7wtx8Vz7M");
 
 #[program]
 pub mod pump {
     use super::*;
-
-    pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
-        Ok(())
-    }
 
     pub fn create_amm(ctx: Context<CreateAmm>, id: Pubkey) -> Result<()> {
         instructions::create_amm(ctx, id)
@@ -30,6 +28,3 @@ pub mod pump {
         instructions::initialize(ctx, nonce, open_time, init_pc_amount, init_coin_amount)
     }
 }
-
-#[derive(Accounts)]
-pub struct Initialize {}
