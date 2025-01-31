@@ -18,6 +18,10 @@ pub mod pump {
         instructions::create_amm(ctx, id)
     }
 
+    pub fn create_pool(ctx: Context<CreatePool>) -> Result<()> {
+        instructions::create_pool(ctx)
+    }
+
     pub fn proxy_initialize(
         ctx: Context<ProxyInitialize>,
         nonce: u8,
