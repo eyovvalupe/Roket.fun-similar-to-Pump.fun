@@ -4,7 +4,15 @@
         "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check"
     },
     "dependencies": {
-        "@coral-xyz/anchor": "^0.29.0"
+        "@coral-xyz/anchor": "^0.29.0",
+        "@metaplex-foundation/mpl-token-metadata": "2.13.0",
+        "@project-serum/serum": "^0.13.64",
+        "@raydium-io/raydium-sdk": "1.1.0-beta.1",
+        "@solana/spl-token": "^0.4.6",
+        "@solana/web3.js": "^1.90.0",
+        "bignumber.js": "^9.1.2",
+        "bn.js": "^5.2.1",
+        "fs": "^0.0.1-security"
     },
     "devDependencies": {
         "chai": "^4.3.4",

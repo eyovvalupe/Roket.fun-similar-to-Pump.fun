@@ -12,7 +12,7 @@ declare_id!("37tkvZheP1dFm3Pfj1uRUHPqFVq9HBpVnNPYFqTQU493");
 pub mod pump {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+    pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
         Ok(())
     }
 
