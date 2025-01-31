@@ -2,6 +2,9 @@ use anchor_lang::prelude::*;
 use instructions::*;
 
 pub mod instructions;
+pub mod constants;
+pub mod states;
+pub mod errors;
 
 declare_id!("37tkvZheP1dFm3Pfj1uRUHPqFVq9HBpVnNPYFqTQU493");
 
@@ -11,6 +14,10 @@ pub mod pump {
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         Ok(())
+    }
+
+    pub fn create_amm(ctx: Context<CreateAmm>, id: Pubkey) -> Result<()> {
+        instructions::create_amm(ctx, id)
     }
 
     pub fn proxy_initialize(
