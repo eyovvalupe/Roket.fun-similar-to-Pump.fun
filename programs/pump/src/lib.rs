@@ -8,7 +8,7 @@ mod constants;
 mod states;
 mod errors;
 
-declare_id!("D2hhTiPavX5C256F7aTc48ntHJhSoRQhVj9oUtUwbvsA");
+declare_id!("GsQXKnCCKBAW9ewgk37oD4HrnXD8F9YNJKrW7U4jaj1e");
 
 #[program]
 pub mod pump {
@@ -24,6 +24,10 @@ pub mod pump {
 
     pub fn create_token_mint(ctx: Context<CreateTokenMint>, token_name: String, token_symbol: String, token_uri: String) -> Result<()> {
         instructions::create_token_mint(ctx, token_name, token_symbol, token_uri)
+    }
+
+    pub fn deposit_liquidity(ctx: Context<DepositLiquidity>, amount_a: u64) -> Result<()> {
+        instructions::deposit_liquidity(ctx, amount_a)
     }
 
     pub fn proxy_initialize(
