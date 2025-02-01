@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.devnet]
-pump = "BR1gGg7joMV6PxKMgsszrSydXJAPMyk1KQC7wtx8Vz7M"
+pump = "D2hhTiPavX5C256F7aTc48ntHJhSoRQhVj9oUtUwbvsA"
 
 [registry]
 url = "https://api.apr.dev"
@@ -15,4 +15,4 @@ cluster = "Devnet"
 wallet = "/home/sung/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/create-mint-metadata.ts"

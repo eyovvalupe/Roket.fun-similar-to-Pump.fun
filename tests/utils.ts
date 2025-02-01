@@ -46,13 +46,13 @@ export const mintingTokens = async ({
     uri: "https://gateway.pinata.cloud/ipfs/QmRRn1UZJHKjLbq2EtZcrEjn2qeUX6B2cjYLir233Dk5vn",
   };
 
-  const associatedTokenAccount = await getAssociatedTokenAddressSync(
+  const associatedTokenAccount = getAssociatedTokenAddressSync(
     mintAKeypair.publicKey,
     creator.publicKey
   );
 
   // Derive PDA for metadata account
-  const [metadataPDA, _] = await PublicKey.findProgramAddress(
+  const [metadataPDA, _] = PublicKey.findProgramAddressSync(
     [
       Buffer.from("metadata"),
       new PublicKey(process.env.METADATA_PROGRAM_ID).toBuffer(),
