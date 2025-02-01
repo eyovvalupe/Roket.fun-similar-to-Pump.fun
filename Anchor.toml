@@ -15,4 +15,4 @@ cluster = "Devnet"
 wallet = "/home/sung/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/create-mint-metadata.ts"
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/create-pool.ts"
