@@ -8,7 +8,7 @@ mod constants;
 mod states;
 mod errors;
 
-declare_id!("GsQXKnCCKBAW9ewgk37oD4HrnXD8F9YNJKrW7U4jaj1e");
+declare_id!("kC2US8dihwxp4MWXhTntSKAhQr6TBaLE8meED4mVjbh");
 
 #[program]
 pub mod pump {

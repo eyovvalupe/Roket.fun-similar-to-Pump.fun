@@ -1,11 +1,12 @@
 [toolchain]
+fixed = "1.23.1"
 
 [features]
 seeds = false
 skip-lint = false
 
 [programs.devnet]
-pump = "GsQXKnCCKBAW9ewgk37oD4HrnXD8F9YNJKrW7U4jaj1e"
+pump = "kC2US8dihwxp4MWXhTntSKAhQr6TBaLE8meED4mVjbh"
 
 [registry]
 url = "https://api.apr.dev"
@@ -15,4 +16,4 @@ cluster = "Devnet"
 wallet = "/home/sung/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/deposit-liquidity.ts"
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/swap.ts"

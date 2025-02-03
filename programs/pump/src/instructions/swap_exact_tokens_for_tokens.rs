@@ -3,6 +3,7 @@ use anchor_spl::{
     associated_token::AssociatedToken,
     token::{self, Mint, Token, TokenAccount, Transfer},
 };
+use fixed::types::I128F0;
 use solana_program::native_token::LAMPORTS_PER_SOL;
 
 use crate::{
@@ -34,19 +35,27 @@ pub fn swap_exact_tokens_for_tokens(
     let pool_a = &ctx.accounts.pool_account_a;
     let pool_b = &ctx.accounts.pool_authority;
     let output = if swap_a {
-        // Perform the swap without I128F0 (scaled multiplication/division)
-        let numerator = input * (pool_b.lamports() + VIRTUAL_SOL);
-        let denominator = pool_a.amount + input;
-        let output = numerator / denominator;
-
-        output
+        I128F0::from_num(input)
+            .checked_mul(I128F0::from_num(pool_b.lamports() + VIRTUAL_SOL))
+            .unwrap()
+            .checked_div(
+                I128F0::from_num(pool_a.amount)
+                    .checked_add(I128F0::from_num(input))
+                    .unwrap(),
+            )
+            .unwrap()
     } else {
-        let numerator = input * pool_a.amount;
-        let denominator = pool_b.lamports() + VIRTUAL_SOL;
-        let output = numerator / denominator;
-
-        output
-    };
+        I128F0::from_num(input)
+            .checked_mul(I128F0::from_num(pool_a.amount))
+            .unwrap()
+            .checked_div(
+                I128F0::from_num(pool_b.lamports() + VIRTUAL_SOL)
+                    .checked_add(I128F0::from_num(input))
+                    .unwrap(),
+            )
+            .unwrap()
+    }
+    .to_num::<u64>();
 
     if output < min_output_amount {
         return err!(TutorialError::OutputTooSmall);
@@ -61,7 +70,6 @@ pub fn swap_exact_tokens_for_tokens(
         &[authority_bump],
     ];
     let signer_seeds = &[&authority_seeds[..]];
-    
     if swap_a {
         token::transfer(
             CpiContext::new(
